@@ -1,6 +1,16 @@
 version: '3'
 
 services:
+  gains:
+    image: local/gains
+    command: ./mvnw spring-boot:run
+    ports:
+      - "8080:8080"
+    links:
+      - mysql
+    volumes:
+      - ".:/gains"
+
   mysql:
     image: mysql:8.0.25
     environment:
